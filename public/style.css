@@ -1,0 +1,79 @@
+:root {
+  --bg: #fff;
+  --surface: #fff;
+  --line: #e6e8ec;
+  --text: #14161a;
+  --muted: #727782;
+  --green: #19a957;
+  --red: #df3d3d;
+  --gray: #d1d5db;
+  --bar-bg: #eef0f3;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); }
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+
+.page { min-height: 100vh; width: 100%; padding: 30px clamp(16px, 4vw, 70px) 60px; }
+.site-header { width: min(1550px, 100%); margin: 0 auto 36px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+.brand { display:flex; align-items:center; gap:16px; }
+.brand-mark { width:58px; height:58px; border:1px solid var(--line); border-radius:15px; display:grid; place-items:center; background:#f6f7f8; font-size:25px; font-weight:900; }
+h1 { margin:0; font-size:clamp(32px, 4vw, 52px); letter-spacing:-.04em; line-height:1; }
+.brand p { margin:7px 0 0; color:var(--muted); font-size:16px; }
+.updated { color:var(--muted); font-size:13px; }
+
+main { width:min(1550px,100%); margin:0 auto; }
+.section { margin-top:30px; }
+.section-head { display:flex; justify-content:space-between; align-items:baseline; gap:15px; margin-bottom:13px; }
+.section-head h2 { margin:0; font-size:clamp(24px, 2.7vw, 32px); letter-spacing:-.02em; }
+.section-head span { color:var(--muted); font-size:13px; }
+
+.history-card, .notice-list, .status-list { border:1px solid var(--line); border-radius:18px; background:var(--surface); }
+.history-card { padding:clamp(16px,2.2vw,28px); overflow:hidden; }
+.history-rows { display:grid; gap:24px; }
+.history-row { display:grid; grid-template-columns:115px minmax(0,1fr); gap:18px; align-items:center; }
+.service-name { font-size:14px; font-weight:850; }
+.bar-track { display:grid; grid-template-columns:repeat(96,minmax(4px,1fr)); gap:3px; min-height:58px; align-items:stretch; }
+.bar { position:relative; width:100%; height:58px; border-radius:3px; background:var(--bar-bg); }
+.bar.ok { background:var(--green); }
+.bar.bad { background:var(--red); }
+.bar.unknown { background:var(--gray); }
+.bar::after { content:""; position:absolute; left:50%; top:-6px; bottom:-6px; width:1px; background:#eceef1; transform:translateX(-50%); }
+.bar:hover { outline:2px solid rgba(20,22,26,.2); outline-offset:2px; z-index:2; }
+.axis { margin:18px 0 0 133px; display:grid; grid-template-columns:repeat(4,1fr); color:var(--muted); font-size:11px; }
+.axis span:nth-child(2), .axis span:nth-child(3) { text-align:center; }
+.axis span:last-child { text-align:right; }
+.legend { display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; color:var(--muted); font-size:12px; }
+.legend-bar { width:9px; height:17px; display:inline-block; margin-right:6px; border-radius:2px; vertical-align:-4px; }
+.legend-bar.ok { background:var(--green); } .legend-bar.bad{background:var(--red);} .legend-bar.unknown{background:var(--gray);}
+
+.notice-list, .status-list { overflow:hidden; }
+.notice { padding:20px 22px; border-bottom:1px solid var(--line); }
+.notice:last-child { border-bottom:0; }
+.notice-date { color:var(--muted); font-size:12px; margin-bottom:5px; }
+.notice-title { font-size:18px; font-weight:900; }
+.notice-body { margin-top:7px; color:#454951; line-height:1.7; white-space:pre-line; }
+
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.status-item { display:flex; align-items:center; gap:13px; padding:18px 20px; border-bottom:1px solid var(--line); font-size:16px; font-weight:850; }
+.status-item:last-child{border-bottom:0;}
+.status-dot { width:12px; height:12px; border-radius:50%; flex:none; }
+.status-dot.ok { background:var(--green); } .status-dot.bad { background:var(--red); }
+.empty { padding:22px 20px; color:var(--muted); }
+
+@media (max-width:900px) {
+  .page{padding:22px 14px 42px;}
+  .history-row{grid-template-columns:92px minmax(0,1fr); gap:10px;}
+  .bar-track{grid-template-columns:repeat(96,minmax(3px,1fr)); gap:2px; min-height:50px;}
+  .bar{height:50px;}
+  .axis{margin-left:102px;}
+}
+@media (max-width:680px) {
+  .site-header{flex-direction:column; align-items:flex-start; gap:10px;}
+  .updated{white-space:normal;}
+  .history-row{grid-template-columns:1fr; gap:8px;}
+  .axis{margin-left:0;}
+  .two-col{grid-template-columns:1fr; gap:24px;}
+  .bar-track{min-height:42px;}
+  .bar{height:42px;}
+}

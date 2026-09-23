@@ -1,0 +1,12 @@
+{
+  "checkedAt": null,
+  "minecraft": {
+    "status": "unknown",
+    "players": null,
+    "maxPlayers": null,
+    "latency": null
+  },
+  "discord": {
+    "status": "online"
+  }
+}
